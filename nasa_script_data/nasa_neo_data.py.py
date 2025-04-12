@@ -5,12 +5,12 @@ import json
 from datetime import date, timedelta
 
 
-# Replace with your API key
-API_KEY = "6socNC5nPTWKsGuhC0L0j48ejJFtCxAnFMCl0Ofj"  # or your real key
+# API key
+API_KEY = "6socNC5nPTWKsGuhC0L0j48ejJFtCxAnFMCl0Ofj"  
 BASE_URL = "https://api.nasa.gov/neo/rest/v1/feed"
 
 
-# Set your date range (max 7 days per request)
+# Data range 7 days
 start_date = date.today() - timedelta(days=3)
 end_date = date.today()
 
@@ -43,7 +43,6 @@ neo_data = data["near_earth_objects"]
 
 # Flatten into a list of NEOs across all dates
 records = []
-
 for date_str, neos in neo_data.items():
     for neo in neos:
         for approach in neo["close_approach_data"]:
@@ -62,12 +61,6 @@ df = pd.DataFrame(records)
 #change format date
 df['close_approach_date']=pd.to_datetime(df['close_approach_date'])
 
-
-# Save cleaned DataFrame to CSV
-df.to_csv(r"C:\Users\Lau\Desktop\Proyectos\nasa_neo_data.csv", index=False, encoding="utf-8")
-
-print(" CSV file saved successfully!")
-
 from sqlalchemy import create_engine
 
 try:
@@ -80,7 +73,7 @@ except Exception as e:
 
 try:
     df.to_sql("nasa_neo_data", engine, if_exists="append", index=False)
-    print("✅ Data uploaded successfully!")
+    print("Data uploaded successfully!")
 except Exception as e:
-    print("❌ Failed to upload data:")
+    print(" Failed to upload data:")
     print(e)
