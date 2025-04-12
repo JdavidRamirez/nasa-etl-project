@@ -38,11 +38,26 @@ Note: The project isn't automated. It's a static project
     - miss_distance_km: (Float)	The closest distance the asteroid will pass by Earth, measured in kilometers.
 3. Query:
  - Built SQL queries to identify potentially hazardous asteroids, their closest distances, and approach speeds.
-4. Viusalize:
+4. Visualize:
  - Uploaded SQL query output to Looker Studio.
  - Created a dashboard with:
-    -Table view of asteroids with conditional formatting
-    -Scorecards (e.g., total hazardous asteroids)
+    - Bar Chart: Top 10 Largest NEOs.
+    - Table: Closest Approaches.
+    - Scorecard: Largest asteroid
+    - Scorecard: Only hazardous asteroid.
+  
+ ## Challenges faced
+
+- JSON data from NASA's API was deeply nested.
+- Required careful type conversions (e.g., float, datetime).
+- Faced an error when uploading to PostgreSQL due to mismatched column names and delimiters.
+
+##  Insights & Learnings
+
+- ETL projects are the best option to organize and structure data paths.
+- Conditional formatting and filters in dashboards help highlight risk.
+- Storytelling improves clarity — titles, labels, and color matter!
+
 
 
                
