@@ -6,7 +6,7 @@ from datetime import date, timedelta
 
 
 # API key
-API_KEY = "6socNC5nPTWKsGuhC0L0j48ejJFtCxAnFMCl0Ofj"  
+API_KEY = " "  
 BASE_URL = "https://api.nasa.gov/neo/rest/v1/feed"
 
 
